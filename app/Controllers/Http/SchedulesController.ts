@@ -43,7 +43,18 @@ export default class SchedulesController {
   }
 
   public async index() {
-    const schedules = await User.all();
+    const all = await Schedule.all();
+
+    const schedules = all.map(item => {
+      return {
+        id: item.id,
+        date: item.date,
+        time: item.time,
+        tel: item.tel,
+        status: item.status ? 'Ativo' : 'Inativo',
+        description: item.description,
+      }
+    })
 
     return schedules;
   }

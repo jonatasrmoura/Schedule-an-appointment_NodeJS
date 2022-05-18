@@ -27,8 +27,12 @@ export default class UsersController {
     const tokenReturn = {
       token,
       user: {
+        id: user.id,
         name: user.name,
+        surname: user.surname,
         email: user.email,
+        password: user.password,
+        isAdmin: user.isAdmin,
       },
     };
 
