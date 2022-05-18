@@ -63,6 +63,11 @@ export default class UsersController {
     return response.status(201).send('User created successfully!');
   }
 
+  public async list() {
+    const all = await User.all();
+    return all;
+  }
+
   public async index({ request }: HttpContextContract) {
     const { email } = request.only(['email']);
 
