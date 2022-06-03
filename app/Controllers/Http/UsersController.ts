@@ -64,8 +64,10 @@ export default class UsersController {
   }
 
   public async list() {
-    const all = await User.all();
-    return all;
+    const users = await User.all();
+    return {
+      users
+    };
   }
 
   public async index({ request }: HttpContextContract) {
@@ -77,8 +79,10 @@ export default class UsersController {
       throw new Error('User do not exists!');
     }
 
-    const userSchedules = await User.query().preload('schedules').where('email', email);
+    // const userSchedules = await User.query().preload('schedules').where('email', email);
 
-    return userSchedules;
+    return {
+      user
+    };
   }
 }

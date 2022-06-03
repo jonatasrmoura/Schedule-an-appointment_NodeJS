@@ -31,7 +31,7 @@ export default class SchedulesController {
       throw new Error('Invalid time!');
     }
 
-    await Schedule.create({
+    const schedule = await Schedule.create({
       userId: userExists.id,
       date,
       time,
@@ -39,7 +39,7 @@ export default class SchedulesController {
       description
     });
 
-    return response.status(201).send('Schedule created successfully!');
+    return response.status(201).json({schedule});
   }
 
   public async index() {
